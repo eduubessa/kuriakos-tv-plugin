@@ -121,9 +121,7 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        $response = json_decode($response);
-
-        return $response;
+        ktv_dd($response);
     }
 
     public static function init($file): ?TelegramService
