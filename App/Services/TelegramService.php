@@ -107,7 +107,28 @@ class TelegramService {
 
     public function getPollResults()
     {
-        echo "Show Results";
+        $update = $this->getUpdates();
+
+        if(!$update['ok']){
+            ktv_dd($update);
+        }
+
+        $data = [
+            'msg_id' => $this->quiz_message_id
+        ];
+
+        $ch = curl_init("{$this->base_url}{$this->token}/getPollResults");
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $this->quiz_message_id = $response['result'][0]['message_id'];
+
+        ktv_dd($response);
     }
 
     public static function init($file): ?TelegramService
