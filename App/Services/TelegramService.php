@@ -71,6 +71,35 @@ class TelegramService {
         ktv_dd($response);
     }
 
+    public function createQuiz(string $question, array $options, int $correct_option_id)
+    {
+        $update = $this->getUpdates();
+
+        if(!$update['ok']){
+            ktv_dd($update);
+        }
+
+        $data = [
+            'chat_id' => $update['result'][0]['message']['chat']['id'],
+            'question' => $question,
+            'options' => json_encode($options),
+            'is_anonymous' => false,
+            'type' => 'quiz',
+            'correct_option_id' => $correct_option_id
+        ];
+
+        $ch = curl_init("{$this->base_url}{$this->token}/sendPoll");
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        ktv_dd($response);
+    }
+
     public static function init($file): ?TelegramService
     {
         static $instance = null;
