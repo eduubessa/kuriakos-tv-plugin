@@ -28,5 +28,6 @@ function ktv_telegram_create_quiz(string $question, array $options, int $correct
 }
 function ktv_telegram_get_poll_results(int $chat_id, int $message_id): void
 {
-    ktv_dd($chat_id);
+    $bot = new \App\Services\TelegramService();
+    $bot->getPollResults($chat_id, $message_id);
 }
