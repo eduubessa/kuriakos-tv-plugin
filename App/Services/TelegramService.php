@@ -99,7 +99,8 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        $this->quiz_message_id = $response['result']['message_id'];
+        echo $response;
+        exit();
     }
 
     public function getPollResults()
