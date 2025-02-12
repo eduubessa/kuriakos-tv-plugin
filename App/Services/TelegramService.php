@@ -54,7 +54,7 @@ class TelegramService {
             ktv_dd($update);
         }
 
-        ktv_dd($update);
+        ktv_dd($update["result"]);
 
         $this->request('sendMessage', [
             "chat_id" => $update['message']['chat']['id'],
