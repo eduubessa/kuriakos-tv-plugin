@@ -18,5 +18,5 @@ function ktv_dd($data){
 function ktv_telegram_send_message()
 {
     $bot = new \App\Services\TelegramService();
-    ktv_dd($bot->sendMessage("Olá, como estás?"));
+    $bot->sendMessage("Olá, como estás?");
 }

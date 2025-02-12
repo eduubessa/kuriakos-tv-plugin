@@ -54,10 +54,21 @@ class TelegramService {
             ktv_dd($update);
         }
 
-        $this->request('sendMessage', [
-            "chat_id" => $update["result"]["message"]["chat"]["id"],
-            "text" => $message
-        ]);
+        $data = [
+            'chat_id' => $update['result'][0]['message']['chat']['id'],
+            'text' => $message
+        ];
+
+        $ch = curl_init("{$this->base_url}{$this->token}/sendMessage");
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        ktv_dd($response);
     }
 
     public static function init($file): ?TelegramService
