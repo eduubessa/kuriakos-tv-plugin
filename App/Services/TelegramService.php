@@ -99,7 +99,7 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        echo($response);
+        var_dump(json_decode($response));
     }
 
     public function getPollResults()
