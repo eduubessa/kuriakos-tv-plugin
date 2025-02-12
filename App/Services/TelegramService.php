@@ -8,8 +8,7 @@ class TelegramService {
 
     private string $base_url = "https://api.telegram.org/bot";
     private string $token = "7261066212:AAEoY6u6vNP_HY3DchfJnf0eW7DsaOKj7fY";
-    private int $quiz_chat_id;
-    private int $quiz_message_id;
+    private int $quiz_message_id = 0;
 
     public function set_up(): static
     {
@@ -107,12 +106,6 @@ class TelegramService {
 
     public function getPollResults()
     {
-        $update = $this->getUpdates();
-
-        if(!$update['ok']){
-            ktv_dd($update);
-        }
-
         $data = [
             'msg_id' => $this->quiz_message_id
         ];
