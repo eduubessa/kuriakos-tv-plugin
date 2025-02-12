@@ -21,12 +21,8 @@ function ktv_telegram_send_message()
     $bot->sendMessage("Olá, como estás?");
 }
 
-function ktv_telegram_create_poll($question, $options)
+function ktv_telegram_create_quiz(string $question, array $options, int $correct_option_id)
 {
     $bot = new \App\Services\TelegramService();
-    $bot->createQuiz("Quem é que foi morto na cruz do calvário por amor de nós?", [
-        "A) João",
-        "B) Pedro",
-        "C) Jesus",
-    ], 3);
+    $bot->createQuiz($question, $options, $correct_option_id);
 }
