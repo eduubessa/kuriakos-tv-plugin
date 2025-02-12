@@ -24,5 +24,5 @@ function ktv_telegram_send_message()
 function ktv_telegram_create_quiz(string $question, array $options, int $correct_option_id)
 {
     $bot = new \App\Services\TelegramService();
-    $bot->createQuiz($question, $options, $correct_option_id);
+    $bot->createQuiz($question, $options, ($correct_option_id-1));
 }
