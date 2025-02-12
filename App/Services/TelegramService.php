@@ -102,7 +102,7 @@ class TelegramService {
         $resp = new \stdClass();
         $resp = json_decode($response, true);
 
-        echo json_encode($response);
+        echo $response;
 
         exit();
     }
