@@ -99,10 +99,7 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        $resp = new \stdClass();
-        $resp = json_decode($response, true);
-
-        echo $response["response"];
+        var_dump(json_decode($response));
 
         exit();
     }
