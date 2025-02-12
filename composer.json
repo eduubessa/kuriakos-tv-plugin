@@ -1,0 +1,22 @@
+{
+    "name": "kuriakostv/estaeahora",
+    "description": "Telegram Bot",
+    "type": "wordpress-plugin",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "Core\\": "Core/"
+        },
+        "files": [
+            "./App/Helpers/helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Eduardo Bessa",
+            "email": "eduubessa@gmail.com"
+        }
+    ],
+    "require": {}
+}
