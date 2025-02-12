@@ -104,13 +104,15 @@ class TelegramService {
 
         $this->quiz_chat_id = $response->result->chat->id;
         $this->quiz_message_id = $response->result->message_id;
+
+        ktv_dd($this->quiz_chat_id);
     }
 
-    public function getPollResults()
+    public function getPollResults(int $chat_id, int $message_id)
     {
         $data = [
-            'chat_id' => $this->quiz_chat_id,
-            'message_id' => $this->quiz_message_id
+            'chat_id' => $chat_id,
+            'message_id' => $$message_id
         ];
 
         $ch = curl_init("{$this->base_url}{$this->token}/getPollResults");
