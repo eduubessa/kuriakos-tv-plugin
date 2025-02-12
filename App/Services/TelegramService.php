@@ -99,7 +99,9 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        var_dump(json_decode($response));
+        $response = json_decode($response);
+
+        $this->quiz_message_id = $response['result']['message_id'];
 
         exit();
     }
