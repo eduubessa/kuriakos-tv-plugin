@@ -15,14 +15,19 @@ function ktv_dd($data){
     exit();
 }
 
-function ktv_telegram_send_message()
+function ktv_telegram_send_message(): void
 {
     $bot = new \App\Services\TelegramService();
     $bot->sendMessage("Olá, como estás?");
 }
 
-function ktv_telegram_create_quiz(string $question, array $options, int $correct_option_id)
+function ktv_telegram_create_quiz(string $question, array $options, int $correct_option_id): void
 {
     $bot = new \App\Services\TelegramService();
     $bot->createQuiz($question, $options, ($correct_option_id-1));
+}
+function ktv_telegram_get_poll_results(): void
+{
+    $bot = new \App\Services\TelegramService();
+    $bot->getPollResults();
 }

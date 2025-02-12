@@ -8,6 +8,9 @@ class TelegramService {
 
     private string $base_url = "https://api.telegram.org/bot";
     private string $token = "7261066212:AAEoY6u6vNP_HY3DchfJnf0eW7DsaOKj7fY";
+    private int $quiz_chat_id;
+    private int $quiz_message_id;
+
     public function set_up(): static
     {
         $this->base_url = $this->base_url . $this->token;
@@ -97,7 +100,33 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
+        $this->quiz_message_id = $response['result']['message_id'];
+
         ktv_dd($response);
+    }
+
+    public function getPollResults()
+    {
+
+        $update = $this->getUpdates();
+
+        if(!$update['ok']){
+            ktv_dd($update);
+        }
+
+        $data = [
+            'chat_id' => $update['result'][0]['message']['chat']['id'],
+            'message_id' => $this->quiz_message_id
+        ];
+
+        $ch = curl_init("{$this->base_url}{$this->token}/getPollResults");
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
     }
 
     public static function init($file): ?TelegramService
