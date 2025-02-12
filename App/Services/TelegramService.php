@@ -101,9 +101,7 @@ class TelegramService {
 
         $response = json_decode($response);
 
-        $this->quiz_message_id = $response['result']['message_id'];
-
-        exit();
+        var_dump($response['result']);
     }
 
     public function getPollResults()
