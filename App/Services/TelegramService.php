@@ -100,7 +100,7 @@ class TelegramService {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        $this->quiz_message_id = $response['result']['message_id'];
+        $this->quiz_message_id = $response['result'][0]['message_id'];
 
         ktv_dd($response);
     }
@@ -127,6 +127,8 @@ class TelegramService {
 
         $response = curl_exec($ch);
         curl_close($ch);
+
+        ktv_dd($response);
     }
 
     public static function init($file): ?TelegramService
