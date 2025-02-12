@@ -21,10 +21,10 @@ function ktv_telegram_send_message(): void
     $bot->sendMessage("Olá, como estás?");
 }
 
-function ktv_telegram_create_quiz(string $question, array $options, int $correct_option_id): void
+function ktv_telegram_create_quiz(string $question, array $options, int $correct_option_id)
 {
     $bot = new \App\Services\TelegramService();
-    $bot->createQuiz($question, $options, ($correct_option_id-1));
+    return $bot->createQuiz($question, $options, ($correct_option_id-1));
 }
 function ktv_telegram_get_poll_results(int $chat_id, int $message_id): void
 {

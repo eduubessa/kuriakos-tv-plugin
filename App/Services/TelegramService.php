@@ -102,10 +102,7 @@ class TelegramService {
 
         $response = json_decode($response);
 
-        $this->quiz_chat_id = $response->result->chat->id;
-        $this->quiz_message_id = $response->result->message_id;
-
-        ktv_dd($this->quiz_message_id);
+        return ['chat_id' => $response->result->chat->id, 'message_id' => $response->result->message_id];
     }
 
     public function getPollResults(int $chat_id, int $message_id)
