@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Services\WhatsappService;
+
 class KuriakosPage extends KuriakosPlugin {
 
     public function __construct(string $file) {
@@ -35,12 +37,15 @@ class KuriakosPage extends KuriakosPlugin {
 
     public function callbacks()
     {
-        if(!file_exists(ABSPATH . "whatsapp.php")) {
-            copy(__DIR__ . '/../../Resources/Views/api/whatsapp.php', ABSPATH . "whatsapp.php");
-        }else{
+        $whatsapp = new WhatsappService();
+
+        if(file_exists(ABSPATH . "whatsapp.php")) {
             unlink(ABSPATH . "whatsapp.php");
-            copy(__DIR__ . '/../../Resources/Views/api/whatsapp.php', ABSPATH . "whatsapp.php");
         }
+
+        $file = fopen(ABSPATH . "whatsapp.php", "w");
+        fwrite($file, $whatsapp->getAccessToken());
+        fclose($file);
     }
 
     public static function init(string $file)
