@@ -36,7 +36,7 @@ class KuriakosPage extends KuriakosPlugin {
     public function callbacks()
     {
         if(!file_exists(ABSPATH . "whatsapp-callback.php")) {
-            copy(__DIR__ . '/../../Resources/Views/api/whatsapp.php', ABSPATH . "whatsapp-callback.php");
+            copy(__DIR__ . '/../../Resources/Views/api/whatsapp.php', ABSPATH . "whatsapp.php");
         }
     }
 
