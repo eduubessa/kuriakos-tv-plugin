@@ -24,5 +24,6 @@ if(!defined('ABSPATH')){
     exit;
 }
 
+
 KuriakosPage::init(__FILE__);
 KuriakosSettings::init(__FILE__)->set_up();
