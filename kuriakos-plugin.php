@@ -10,6 +10,7 @@ Author URI: http://eduardobessa.pt
 License: GPL2
 */
 
+use App\Core\KuriakosConfiguration;
 use App\Core\KuriakosPage;
 use App\Core\KuriakosSettings;
 

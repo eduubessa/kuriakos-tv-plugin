@@ -2,18 +2,20 @@
 
 namespace App\Services;
 
+use App\Core\KuriakosConfiguration;
 use App\Core\KuriakosPlugin;
 
 class TelegramService {
 
     private string $base_url = "https://api.telegram.org/bot";
-    private string $token = "7261066212:AAEoY6u6vNP_HY3DchfJnf0eW7DsaOKj7fY";
+    private string $token = "";
     private $quiz_chat_id;
     private $quiz_message_id = 0;
 
     public function set_up(): static
     {
         $this->base_url = $this->base_url . $this->token;
+        $this->token = KuriakosConfiguration::get('TELEGRAM_API_KEY');
 
         return $this;
     }
