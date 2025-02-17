@@ -1,1 +1,1 @@
-<h1>Hello world</h1>
+The URL couldn't be validated. Response does not match challenge, expected value="1491059769", received="\u003Ch1>Hello world\u003C\/h1>"

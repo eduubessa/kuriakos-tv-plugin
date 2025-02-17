@@ -37,6 +37,9 @@ class KuriakosPage extends KuriakosPlugin {
     {
         if(!file_exists(ABSPATH . "whatsapp.php")) {
             copy(__DIR__ . '/../../Resources/Views/api/whatsapp.php', ABSPATH . "whatsapp.php");
+        }else{
+            unlink(ABSPATH . "whatsapp.php");
+            copy(__DIR__ . '/../../Resources/Views/api/whatsapp.php', ABSPATH . "whatsapp.php");
         }
     }
 
