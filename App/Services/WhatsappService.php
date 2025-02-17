@@ -116,4 +116,9 @@ class WhatsappService
 
         ktv_dd($response);
     }
+
+    public function getAccessToken(): string
+    {
+        return $this->access_token;
+    }
 }

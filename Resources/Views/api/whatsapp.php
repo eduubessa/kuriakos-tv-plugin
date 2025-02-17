@@ -1,1 +1,4 @@
-The URL couldn't be validated. Response does not match challenge, expected value="1491059769", received="\u003Ch1>Hello world\u003C\/h1>"
+<?php
+
+$whatsapp = new \App\Services\WhatsappService();
+echo $whatsapp->getAccessToken();
